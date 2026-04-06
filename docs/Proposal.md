@@ -76,7 +76,7 @@ ELSE IF choice is "5" (FEATURES):
     WHILE True:
         DISPLAY "FEATURES" (Average, Passing, Search, Organize, Failing, Back to Main Menu)
         GET choice
-        IF choice is "6": **BREAK** (Back to main menu):
+        IF choice is "6": BREAK (Back to main menu):
         	INPUT sid
         	GET student data from database
         IF student does not exist or has no grades:
