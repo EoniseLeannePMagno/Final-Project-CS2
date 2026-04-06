@@ -37,48 +37,68 @@ Outputs:
 
 _Pseudocode_
 
-Start Program
-Load JSON file "students.json" containing all student data
-Display menu of features:
-    1. Show all student records
-    2. Compute general average of a student
-    3. List subjects where the student scored ≤ 2.50
-    4. List failing subjects (grade > 3.0)
-    5. Sort a student’s subjects by grade
-    6. Exit program
-Ask user to choose a feature
-IF user chooses 1:
-        For each student in JSON data:
-            Display Student ID, Name, Section
-            Display all subjects with their grades
-ELSE IF user chooses 2:
-        Ask for Student ID
-        Find the student in JSON data
-        Compute total of all grades
-        Compute general average = total / number of subjects
-        Display the general average
-ELSE IF user chooses 3:
-        Ask for Student ID
-        Find the student in JSON data
-        Create a list of subjects with grade ≤ 2.50
-        Display the list, or display “None” if empty
-ELSE IF user chooses 4:
-        Ask for Student ID
-        Find the student in JSON data
-        Create a list of subjects with grade > 3.0
-        Display the list, or display “None” if empty
-ELSE IF user chooses 5:
-        Ask for Student ID
-        Find the student in JSON data
-        Ask user for sorting option (ASC or DESC)
-        Sort the student’s subjects by grade according to the chosen order
-        Display the sorted subjects with grades
-ELSE IF user chooses 6:
-        Display "Exiting program..."
+Start Progam
+IF choice is "1" (DISPLAY):
+    GET students_data from ref
+    IF students_data exists:
+        FOR EACH student in students_data:
+            PRINT student ID and Name
+            IF student has subjects:
+                FOR EACH subject and grade:
+                    PRINT subject name and grade
+    ELSE:
+        PRINT "No students found."
+
+ELSE IF choice is "2" (ADD):
+    INPUT sid, name, section, math_grade, cs_grade
+    CREATE student object
+    SAVE student to ref
+    PRINT "Success!"
+
+ELSE IF choice is "3" (UPDATE):
+    INPUT sid
+    IF sid exists in database:
+        INPUT new name, section, math_grade, cs_grade
+        UPDATE database record at sid with new values
+    	PRINT "Update successful"
+    ELSE:
+        PRINT "Student not found."
+
+ELSE IF choice is "4" (DELETE):
+    INPUT sid
+    IF sid exists:
+        REMOVE record from database
+        PRINT "Deleted successfully"
+    ELSE:
+        PRINT "Student not found"
+
+ELSE IF choice is "5" (FEATURES):
+    WHILE True:
+        DISPLAY "FEATURES" (Average, Passing, Search, Organize, Failing, Back to Main Menu)
+        GET choice
+        IF choice is "6": **BREAK** (Back to main menu):
+        	INPUT sid
+        	GET student data from database
+        IF student does not exist or has no grades:
+            PRINT "Error"
+			CONTINUE to next iteration
+	    CASE choice OF:
+            "1": CALCULATE average of all grades and PRINT
+            "2": PRINT subjects where grade <= 2.50
+            "3": INPUT subject name, GET and PRINT specific grade
+            "4": SORT subjects by grade (descending) and PRINT
+            "5": PRINT subjects where grade > 2.50
+            DEFAULT: PRINT "Invalid choice"
+
+ELSE IF choice is "6" (EXIT):
+    PRINT "Exiting Program. Goodbye!"
+    TERMINATE loop
+
 ELSE:
-        Display "Invalid choice. Please try again."
-Repeat menu until user chooses 6
+    PRINT "Invalid choice"
+
 End Program
+
 
 
 _JSON dataset:_
