@@ -11,11 +11,11 @@ Project Objectives:
 	3.	To practice programming concepts by applying them to real-life situations.
 
 Planned Features:
-	1.	Compute the general average of one student.
-	2.	List the subjects where the student scored 2.5 or better.
-	3.	Determine the final grade of a student for the entire school year.
-	4.	Organize the student’s grades using any preferred sorting method.
-	5.	Notify students whenever they have a failing grade.
+	1. Compute General Average
+	2. List Subjects with Passing Grades (<= 2.50)
+    3. Compute Final Grade for a Subject
+    4. Organize Student Grades (Best to Worst)
+    5. List Subjects with Failing Grades (> 2.50)
 
 Planned Inputs and Outputs:
 
